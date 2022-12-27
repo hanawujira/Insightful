@@ -1,0 +1,91 @@
+.info-card {
+
+    width: 200px;
+    height: 100px;
+    margin-left: 20px;
+
+    mat-card-header {
+        padding: 20px;
+    }
+
+    mat-card-content {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .mat-card-header-text {
+        margin: 0px;
+    }
+
+    &.total-employee-card {
+        border-left: 12px solid;
+        border-color: #a6fbde;
+
+        mat-icon {
+            color: #a6fbde;
+        }
+    }
+    &.total-time-card {
+        border-left: 12px solid;
+        border-color: #82c9d9;
+
+        mat-icon {
+            color: #82c9d9;
+        }
+    }   
+    &.total-regular-time-card {
+        border-left: 12px solid;
+        border-color: #b67fffc9;
+
+        mat-icon {
+            color: #b67fffc9;
+        }
+    }
+    &.total-overtime-card {
+        border-left: 12px solid;
+        border-color: #ffa27f;
+
+        mat-icon {
+            color: #ffa27f;
+        }
+    }
+}
+
+.employee-table {
+    margin: 30px;
+    height: 67vh;
+    overflow: auto;
+
+    table {
+        width: 100%;
+    }
+}
+
+.table-button-container {
+    display: flex;
+    justify-content: end;
+    
+    div {
+        margin-right: 35px;
+    }
+}
+
+.card-title {
+    font-size: 16px;
+    height: 45px;
+}
+
+.card-detail {
+    display: flex;
+
+    mat-icon{
+        flex: 1;
+        font-size: 65px;
+    }
+
+    div {
+        flex: 1;
+        font-size: 45px; 
+        line-height: 1.6;
+    }
+}

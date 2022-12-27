@@ -1,0 +1,118 @@
+<mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile>
+        <mat-card class="info-card total-employee-card">
+            <mat-card-title>
+                <div class="card-title">
+                    Total Employees
+                </div>
+                <div class="card-detail">
+                    <mat-icon>people</mat-icon>
+                    <div>
+                        {{employeeList.data.length}}
+                    </div>
+                </div>
+            </mat-card-title>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card class="info-card total-time-card">
+            <mat-card-title>
+                <div class="card-title">
+                    Total Clocked Time
+                </div>
+                <div class="card-detail">
+                    <mat-icon>schedule</mat-icon>
+                    <div>
+                        2K
+                    </div>
+                </div>
+            </mat-card-title>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card class="info-card total-regular-time-card">
+            <mat-card-title>
+                <div class="card-title">
+                    Total Regular Hour Paid Amount
+                </div>
+                <div class="card-detail">
+                    <mat-icon>watch_later</mat-icon>
+                    <div>
+                        45K
+                    </div>
+                </div>
+            </mat-card-title>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card class="info-card total-overtime-card">
+            <mat-card-title>
+                <div class="card-title">
+                    Total Overtime Paid Amount
+                </div>
+                <div class="card-detail">
+                    <mat-icon>timelapse</mat-icon>
+                    <div>
+                        34K
+                    </div>
+                </div>
+            </mat-card-title>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+<div class="table-button-container">
+    <div>
+        <button mat-raised-button color="primary" [disabled]="!selection.hasValue()" (click)="openDialog()">Bulk Edit</button>
+    </div>
+</div>
+<div class="employee-table">
+    <table mat-table [dataSource]="employeeList" class="mat-elevation-z8">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="Email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+        </ng-container>
+
+        <!-- HourlyRate Column -->
+        <ng-container matColumnDef="HourlyRate">
+            <th mat-header-cell *matHeaderCellDef> Hourly Rate </th>
+            <td mat-cell *matCellDef="let element"> {{element.HourlyRate}} </td>
+        </ng-container>
+
+        <!-- OvertimeHourlyRate Column -->
+        <ng-container matColumnDef="OvertimeHourlyRate">
+            <th mat-header-cell *matHeaderCellDef> Overtime Hourly Rate </th>
+            <td mat-cell *matCellDef="let element"> {{element.OvertimeHourlyRate}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

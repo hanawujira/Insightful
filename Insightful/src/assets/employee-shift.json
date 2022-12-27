@@ -1,0 +1,56 @@
+[
+    {
+        "Id": "1",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "2",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "3",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "4",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "5",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "6",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "7",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "8",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    },
+    {
+        "Id": "9",
+        "EmployeeId": 1,
+        "ClockIn": "2022-12-26T09:18AM",
+        "ClockOut": "2022-12-26T05:18PM"
+    }
+]

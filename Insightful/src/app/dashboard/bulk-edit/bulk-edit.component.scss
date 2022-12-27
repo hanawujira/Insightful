@@ -1,0 +1,37 @@
+.bulk-edit-form {
+    margin: 15px;
+}
+
+.shift-table {
+    width: 100%;
+    max-height: 67vh;
+    overflow-y: auto;
+
+    table {
+        width: 100%;
+    }
+}
+
+.form-full-width {
+    width: 100%;
+}
+
+.shift-table-control {
+    display: flex;
+
+    .title {
+        flex: 1;
+    }
+
+    .filter {
+        justify-items: end;
+    }
+}
+
+.mat-dialog-content {
+    max-height: 73vh;
+}
+
+.mat-dialog-actions{
+    justify-content: end;
+}
