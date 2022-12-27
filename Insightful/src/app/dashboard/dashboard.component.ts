@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -15,17 +15,21 @@ import { BulkEditComponent } from './bulk-edit/bulk-edit.component';
 })
 export class DashboardComponent implements OnInit {
   employeeList= new MatTableDataSource<EmployeeInfo>();
+  totalClockedTime: number = 0;
+  totalRegularHourPaid: number = 0;
+  totalOvertimePaidAmount: number = 0;
   displayedColumns: string[] = [
     'select',
     'Id',
     'Name',
     'Email',
-    'HourlyRate',
-    'OvertimeHourlyRate'
+    'TotalClockedInTime',
+    'TotalAmountPaid',
+    'TotalOvertimeAmountPaid'
   ];
   selection = new SelectionModel<EmployeeInfo>(true, []);
 
-  constructor(private dashboardService: DashboardService, private matDialog: MatDialog) {
+  constructor(private dashboardService: DashboardService, private matDialog: MatDialog, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -38,6 +42,19 @@ export class DashboardComponent implements OnInit {
         this.dashboardService.employeeInfo = result;
       }
       this.employeeList.data = result;
+      const initialValue = 0;
+      this.totalClockedTime =  Math.floor(result.map(t => t.TotalClockedInTime).reduce(
+        (accumulator, currentValue) => accumulator! + currentValue!,
+        initialValue
+      )!);
+      this.totalOvertimePaidAmount =  Math.floor(result.map(t => t.TotalOvertimeAmountPaid).reduce(
+        (accumulator, currentValue) => accumulator! + currentValue!,
+        initialValue
+      )!);
+      this.totalRegularHourPaid =  Math.floor(result.map(t => t.TotalAmountPaid).reduce(
+        (accumulator, currentValue) => accumulator! + currentValue!,
+        initialValue
+      )!);
     })
   }
 
@@ -64,11 +81,20 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.matDialog.open(BulkEditComponent, {
+   const dialogRef = this.matDialog.open(BulkEditComponent, {
       height: '800px',
       width: '900px',
       data: this.selection.selected
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.cdr.markForCheck();
+    });
   }
 
+  kFormatter(num: number) {
+    return Math.abs(num) > 999 
+    ? Math.sign(num) * +(Math.abs(num) / 1000).toFixed(1) + 'k' 
+    : Math.sign(num) * Math.abs(num);
+  }
 }

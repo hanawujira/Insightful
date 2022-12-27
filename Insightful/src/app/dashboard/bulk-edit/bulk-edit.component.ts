@@ -11,7 +11,7 @@ import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
   styleUrls: ['./bulk-edit.component.scss']
 })
 export class BulkEditComponent implements OnInit {
-  displayedColumns: string[] = ['EmployeeId', 'ClockIn', 'ClockOut', 'TotalTime'];
+  displayedColumns: string[] = ['EmployeeId', 'ClockIn', 'ClockOut', 'WorkedHours'];
   employees: EmployeeInfo[] = [];
   employeeShift = new MatTableDataSource<EmployeeShift>();
   constructor(private dashboardService: DashboardService, public dialogRef: MatDialogRef<BulkEditComponent>, @Inject(MAT_DIALOG_DATA) public data: EmployeeInfo[]) { }

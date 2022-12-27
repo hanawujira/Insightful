@@ -7,6 +7,9 @@ export class EmployeeInfo {
     Email?: string;
     HourlyRate?: number;
     OvertimeHourlyRate?: number;
+    TotalClockedInTime?: number;
+    TotalAmountPaid?: number;
+    TotalOvertimeAmountPaid?: number;
     Status?: EmployeeStatus;
     SelectedDate?: Date;
     ValidDates: Date[];
